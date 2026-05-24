@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;700;900&display=swap");
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(249, 115, 22, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(185, 28, 28, 0.18), transparent 60%),
+    #0b0f1a;
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-scene-500 px-4 py-2 text-sm font-semibold text-stage-950 shadow-lg shadow-scene-700/40 transition hover:bg-scene-400 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-stage-200/10 bg-white/5 px-4 py-2 text-sm font-medium text-stage-100 transition hover:bg-white/10;
+  }
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-velvet-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-velvet-500;
+  }
+  .card {
+    @apply rounded-2xl border border-white/10 bg-white/5 p-5 shadow-xl shadow-stage-950/30 backdrop-blur;
+  }
+  .card-hover {
+    @apply transition hover:border-scene-400/40 hover:bg-white/10;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-stage-900/60 px-3 py-2 text-sm text-stage-50 placeholder:text-stage-400 outline-none focus:border-scene-400 focus:ring-1 focus:ring-scene-400;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-stage-400;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider text-stage-200;
+  }
+  .section-title {
+    @apply font-display text-3xl font-bold text-stage-50;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
