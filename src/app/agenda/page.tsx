@@ -80,12 +80,12 @@ function AgendaInner() {
 
   return (
     <div className="space-y-6">
-      <div className="card flex flex-wrap items-end gap-3">
-        <div>
+      <div className="card flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end">
+        <div className="min-w-0 flex-1">
           <label className="label">Semaine</label>
-          <div className="flex items-center gap-1">
+          <div className="flex flex-wrap items-center gap-1">
             <button
-              className="btn-ghost"
+              className="btn-ghost px-3"
               onClick={() => {
                 const d = new Date(weekStart);
                 d.setDate(d.getDate() - 7);
@@ -94,12 +94,12 @@ function AgendaInner() {
             >
               ←
             </button>
-            <div className="rounded-xl bg-ink-900/60 px-4 py-2 text-sm ring-1 ring-ivory-100/10">
-              {weekStart.toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })} →{" "}
-              {days[6].toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })}
+            <div className="grow rounded-xl bg-ink-900/60 px-3 py-2 text-center text-xs sm:text-sm ring-1 ring-ivory-100/10">
+              {weekStart.toLocaleDateString("fr-FR", { day: "2-digit", month: "short" })} →{" "}
+              {days[6].toLocaleDateString("fr-FR", { day: "2-digit", month: "short" })}
             </div>
             <button
-              className="btn-ghost"
+              className="btn-ghost px-3"
               onClick={() => {
                 const d = new Date(weekStart);
                 d.setDate(d.getDate() + 7);
@@ -116,10 +116,10 @@ function AgendaInner() {
             </button>
           </div>
         </div>
-        <div>
+        <div className="sm:w-56">
           <label className="label">Filtrer par prof</label>
           <select
-            className="input w-44"
+            className="input"
             value={teacherFilter}
             onChange={(e) => setTeacherFilter(e.target.value)}
           >
@@ -131,7 +131,8 @@ function AgendaInner() {
         </div>
       </div>
 
-      <div className="grid gap-2 lg:grid-cols-7">
+      <div className="-mx-4 overflow-x-auto px-4 pb-2 scrollbar-thin sm:mx-0 sm:px-0 lg:overflow-visible">
+      <div className="grid min-w-[840px] grid-cols-7 gap-2 lg:min-w-0">
         {days.map((d) => {
           const ds = fmtDate(d);
           const entries = visibleAgenda
@@ -194,6 +195,7 @@ function AgendaInner() {
             </div>
           );
         })}
+      </div>
       </div>
 
       <div className="card">

@@ -36,8 +36,8 @@ export default function CoursesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="card flex flex-wrap items-end gap-3">
-        <div className="grow">
+      <div className="card space-y-3">
+        <div>
           <label className="label">Rechercher dans le programme</label>
           <input
             value={query}
@@ -46,30 +46,32 @@ export default function CoursesPage() {
             className="input"
           />
         </div>
-        <div>
-          <label className="label">Niveau</label>
-          <select
-            value={level}
-            onChange={(e) => setLevel(e.target.value as any)}
-            className="input w-44"
-          >
-            {LEVELS.map((l) => (<option key={l} value={l}>{l}</option>))}
-          </select>
+        <div className="grid gap-3 sm:grid-cols-[1fr,1fr,auto] sm:items-end">
+          <div>
+            <label className="label">Niveau</label>
+            <select
+              value={level}
+              onChange={(e) => setLevel(e.target.value as any)}
+              className="input"
+            >
+              {LEVELS.map((l) => (<option key={l} value={l}>{l}</option>))}
+            </select>
+          </div>
+          <div>
+            <label className="label">Prof</label>
+            <select
+              value={teacherId}
+              onChange={(e) => setTeacherId(e.target.value)}
+              className="input"
+            >
+              <option value="">Toute la troupe</option>
+              {state.teachers.map((t) => (<option key={t.id} value={t.id}>{t.name}</option>))}
+            </select>
+          </div>
+          <Link href="/cours/nouveau" className="btn-primary justify-center">
+            <IconPlus size={14} /> Créer un cours
+          </Link>
         </div>
-        <div>
-          <label className="label">Prof</label>
-          <select
-            value={teacherId}
-            onChange={(e) => setTeacherId(e.target.value)}
-            className="input w-44"
-          >
-            <option value="">Toute la troupe</option>
-            {state.teachers.map((t) => (<option key={t.id} value={t.id}>{t.name}</option>))}
-          </select>
-        </div>
-        <Link href="/cours/nouveau" className="btn-primary">
-          <IconPlus size={14} /> Créer
-        </Link>
       </div>
 
       {filtered.length === 0 && (

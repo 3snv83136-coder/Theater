@@ -78,7 +78,7 @@ export default function GeneratorsPage() {
         </div>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr,360px]">
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr),360px]">
         <div className="card flex min-h-[300px] flex-col">
           <div className="flex items-center justify-between">
             <h2 className="section-title text-xl">

@@ -140,3 +140,21 @@ export const IconStar = (p: IconProps) => (
     <path d="m12 3 2.7 6 6.3.6-4.8 4.3 1.5 6.1L12 17l-5.7 3 1.5-6.1L3 9.6 9.3 9 12 3Z" />
   </svg>
 );
+
+export const IconArrowLeft = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M19 12H5M11 18l-6-6 6-6" />
+  </svg>
+);
+
+export const IconMenu = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </svg>
+);
+
+export const IconClose = (p: IconProps) => (
+  <svg {...base(p)}>
+    <path d="M6 6l12 12M18 6l-12 12" />
+  </svg>
+);
