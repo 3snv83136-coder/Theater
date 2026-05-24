@@ -95,10 +95,10 @@ export default function NewCoursePage() {
       <div className="card">
         <div className="flex flex-wrap items-center gap-3">
           <h1 className="font-display text-2xl font-semibold">Nouveau cours</h1>
-          <div className="ml-auto inline-flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
+          <div className="ml-auto inline-flex rounded-xl bg-ivory-100/5 p-1 ring-1 ring-ivory-100/10">
             <button
               className={`rounded-lg px-3 py-1.5 text-sm transition ${
-                mode === "manual" ? "bg-scene-500 text-stage-950" : "text-stage-200"
+                mode === "manual" ? "bg-gold-300 text-ink-950" : "text-ivory-100"
               }`}
               onClick={() => setMode("manual")}
             >
@@ -106,7 +106,7 @@ export default function NewCoursePage() {
             </button>
             <button
               className={`rounded-lg px-3 py-1.5 text-sm transition ${
-                mode === "ai" ? "bg-scene-500 text-stage-950" : "text-stage-200"
+                mode === "ai" ? "bg-gold-300 text-ink-950" : "text-ivory-100"
               }`}
               onClick={() => setMode("ai")}
             >
@@ -116,7 +116,7 @@ export default function NewCoursePage() {
         </div>
 
         {mode === "ai" && (
-          <div className="mt-4 rounded-xl border border-scene-400/30 bg-scene-500/10 p-4">
+          <div className="mt-4 rounded-xl border border-gold-300/30 bg-gold-300/10 p-4">
             <div className="label">Thème à explorer</div>
             <div className="flex flex-wrap gap-2">
               <input
@@ -139,7 +139,7 @@ export default function NewCoursePage() {
               </button>
             </div>
             {draft && (
-              <p className="mt-3 text-xs text-stage-300">
+              <p className="mt-3 text-xs text-ivory-200/80">
                 Brouillon généré et appliqué au formulaire ci-dessous. Vous
                 pouvez le retoucher avant d'enregistrer.
               </p>
@@ -226,11 +226,11 @@ export default function NewCoursePage() {
           <button className="btn-ghost" onClick={addExercise}>+ Ajouter un exercice</button>
         </div>
         {exercises.length === 0 && (
-          <p className="text-sm text-stage-400">Aucun exercice. Ajoutez-en ou générez via l'IA.</p>
+          <p className="text-sm text-ivory-200/60">Aucun exercice. Ajoutez-en ou générez via l'IA.</p>
         )}
         <div className="space-y-3">
           {exercises.map((ex, idx) => (
-            <div key={ex.id} className="rounded-xl bg-stage-900/50 p-4 ring-1 ring-white/5">
+            <div key={ex.id} className="rounded-xl bg-ink-900/50 p-4 ring-1 ring-ivory-100/10">
               <div className="grid gap-3 md:grid-cols-[1fr,120px,auto]">
                 <input
                   className="input"

@@ -54,7 +54,7 @@ export default function InscriptionPage() {
     <div className="grid gap-6 lg:grid-cols-[1fr,1.4fr]">
       <form onSubmit={submit} className="card space-y-3">
         <h1 className="font-display text-2xl font-semibold">Rejoindre la troupe</h1>
-        <p className="text-sm text-stage-400">
+        <p className="text-sm text-ivory-200/60">
           Remplissez le formulaire, nous vous recontactons sous 48h.
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
@@ -115,12 +115,12 @@ export default function InscriptionPage() {
 
       <div className="card">
         <h2 className="section-title text-xl">Inscriptions reçues</h2>
-        <p className="mt-1 text-sm text-stage-400">
+        <p className="mt-1 text-sm text-ivory-200/60">
           Suivi des candidatures pour la troupe et coordination du recontact.
         </p>
-        <ul className="mt-4 divide-y divide-white/5">
+        <ul className="mt-4 divide-y divide-ivory-100/10">
           {state.inscriptions.length === 0 && (
-            <li className="py-6 text-center text-sm text-stage-400">
+            <li className="py-6 text-center text-sm text-ivory-200/60">
               Aucune inscription pour l'instant.
             </li>
           )}
@@ -132,16 +132,16 @@ export default function InscriptionPage() {
                   <div>
                     <div className="font-semibold">
                       {i.firstName} {i.lastName}{" "}
-                      <span className="ml-1 text-xs font-normal text-stage-400">
+                      <span className="ml-1 text-xs font-normal text-ivory-200/60">
                         · {i.email}
                       </span>
                     </div>
-                    <div className="text-xs text-stage-400">
+                    <div className="text-xs text-ivory-200/60">
                       {i.level} · {teacher ? `prof : ${teacher.name}` : "pas de préférence"} ·{" "}
                       {new Date(i.createdAt).toLocaleDateString("fr-FR")}
                     </div>
                     {i.message && (
-                      <div className="mt-1 max-w-xl text-sm text-stage-200">“{i.message}”</div>
+                      <div className="mt-1 max-w-xl text-sm text-ivory-100">“{i.message}”</div>
                     )}
                   </div>
                   <select

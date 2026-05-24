@@ -26,7 +26,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                 ? "bg-velvet-700 text-white ring-velvet-500/50"
                 : t.tone === "success"
                 ? "bg-emerald-600 text-white ring-emerald-400/40"
-                : "bg-stage-800 text-stage-100 ring-white/10"
+                : "bg-ink-800 text-ivory-100 ring-ivory-100/10"
             }`}
           >
             {t.message}

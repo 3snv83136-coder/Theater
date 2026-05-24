@@ -117,8 +117,8 @@ export default function ShowsPage() {
                   onClick={() => toggleCast(t.id)}
                   className={`rounded-xl px-3 py-1.5 text-sm transition ${
                     on
-                      ? "bg-scene-500 text-stage-950"
-                      : "bg-white/5 text-stage-200 hover:bg-white/10"
+                      ? "bg-gold-300 text-ink-950"
+                      : "bg-ivory-100/5 text-ivory-100 hover:bg-ivory-100/10"
                   }`}
                 >
                   {t.name}
@@ -132,23 +132,23 @@ export default function ShowsPage() {
 
       <div className="grid gap-4 md:grid-cols-2">
         {state.shows.length === 0 && (
-          <div className="card text-stage-300">Aucun spectacle créé.</div>
+          <div className="card text-ivory-200/80">Aucun spectacle créé.</div>
         )}
         {state.shows.map((s) => (
           <div key={s.id} className="card">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-display text-xl font-semibold">{s.title}</h3>
-                <div className="text-xs text-stage-400">
+                <div className="text-xs text-ivory-200/60">
                   {new Date(s.date).toLocaleString("fr-FR")} · {s.venue}
                 </div>
               </div>
               <span className="chip">{(s.priceCents / 100).toFixed(2)} €</span>
             </div>
-            <p className="mt-3 text-sm text-stage-200">{s.pitch}</p>
+            <p className="mt-3 text-sm text-ivory-100">{s.pitch}</p>
             {s.cast.length > 0 && (
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <span className="text-xs uppercase tracking-widest text-stage-400">
+                <span className="text-xs uppercase tracking-widest text-ivory-200/60">
                   Distribution
                 </span>
                 {s.cast.map((id) => (

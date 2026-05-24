@@ -52,13 +52,13 @@ export default function DashboardPage() {
       <section className="grid gap-6 lg:grid-cols-[1.2fr,1fr]">
         <div className="card">
           <h2 className="section-title text-xl">Diffuser une newsletter</h2>
-          <p className="mt-1 text-sm text-stage-400">
+          <p className="mt-1 text-sm text-ivory-200/60">
             Envoyez un message à toute la base : élèves, profs, ou les deux.
           </p>
           <div className="mt-4 grid gap-3">
             <div>
               <label className="label">Cible</label>
-              <div className="inline-flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
+              <div className="inline-flex rounded-xl bg-ivory-100/5 p-1 ring-1 ring-ivory-100/10">
                 {(
                   [
                     ["all", "Tout le monde"],
@@ -69,7 +69,7 @@ export default function DashboardPage() {
                   <button
                     key={id}
                     className={`rounded-lg px-3 py-1.5 text-sm transition ${
-                      target === id ? "bg-scene-500 text-stage-950" : "text-stage-200"
+                      target === id ? "bg-gold-300 text-ink-950" : "text-ivory-100"
                     }`}
                     onClick={() => setTarget(id)}
                   >
@@ -77,7 +77,7 @@ export default function DashboardPage() {
                   </button>
                 ))}
               </div>
-              <div className="mt-1 text-xs text-stage-400">
+              <div className="mt-1 text-xs text-ivory-200/60">
                 {recipients.length} destinataire(s)
               </div>
             </div>
@@ -103,19 +103,19 @@ export default function DashboardPage() {
 
         <div className="card">
           <h2 className="section-title text-xl">Activité par prof</h2>
-          <ul className="mt-3 divide-y divide-white/5">
+          <ul className="mt-3 divide-y divide-ivory-100/10">
             {byTeacher.map(({ teacher, courses, sessions }) => (
               <li key={teacher.id} className="flex items-center justify-between py-2">
                 <div className="flex items-center gap-3">
                   <span
-                    className="grid h-8 w-8 place-items-center rounded-full font-bold text-stage-950"
+                    className="grid h-8 w-8 place-items-center rounded-full font-bold text-ink-950"
                     style={{ backgroundColor: teacher.color }}
                   >
                     {teacher.name.charAt(0)}
                   </span>
                   <div>
                     <div className="font-semibold">{teacher.name}</div>
-                    <div className="text-xs text-stage-400">{teacher.specialty}</div>
+                    <div className="text-xs text-ivory-200/60">{teacher.specialty}</div>
                   </div>
                 </div>
                 <div className="flex gap-2 text-xs">
@@ -131,13 +131,13 @@ export default function DashboardPage() {
       <section className="card">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="section-title text-xl">Journal des envois</h2>
-          <Link href="/spectacles" className="text-xs text-scene-300 hover:underline">
+          <Link href="/spectacles" className="text-xs text-gold-300 hover:underline">
             → Diffuser un spectacle
           </Link>
         </div>
-        <ul className="divide-y divide-white/5">
+        <ul className="divide-y divide-ivory-100/10">
           {state.mails.length === 0 && (
-            <li className="py-6 text-center text-sm text-stage-400">
+            <li className="py-6 text-center text-sm text-ivory-200/60">
               Aucun envoi pour l'instant.
             </li>
           )}
@@ -146,14 +146,14 @@ export default function DashboardPage() {
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <div className="font-semibold">{m.subject}</div>
-                  <div className="text-xs text-stage-400">
+                  <div className="text-xs text-ivory-200/60">
                     {new Date(m.sentAt).toLocaleString("fr-FR")} · {m.to.length} destinataire(s) ·{" "}
                     {m.kind}
                   </div>
                 </div>
-                <details className="text-xs text-stage-300">
+                <details className="text-xs text-ivory-200/80">
                   <summary className="cursor-pointer hover:underline">Voir le contenu</summary>
-                  <pre className="mt-2 max-w-2xl whitespace-pre-wrap rounded-lg bg-stage-900/60 p-3 text-stage-200 ring-1 ring-white/5">
+                  <pre className="mt-2 max-w-2xl whitespace-pre-wrap rounded-lg bg-ink-900/60 p-3 text-ivory-100 ring-1 ring-ivory-100/10">
                     {m.body}
                   </pre>
                 </details>
@@ -166,7 +166,7 @@ export default function DashboardPage() {
       <section className="card flex items-center justify-between">
         <div>
           <h3 className="font-semibold">Réinitialiser les données</h3>
-          <p className="text-xs text-stage-400">
+          <p className="text-xs text-ivory-200/60">
             Restaure les cours, agenda, inscriptions et envois aux données d'origine.
           </p>
         </div>
@@ -188,8 +188,8 @@ export default function DashboardPage() {
 
 function Kpi({ label, value, accent }: { label: string; value: number; accent?: boolean }) {
   return (
-    <div className={`card ${accent ? "ring-1 ring-scene-400/40" : ""}`}>
-      <div className="text-xs uppercase tracking-widest text-stage-400">{label}</div>
+    <div className={`card ${accent ? "ring-1 ring-gold-300/40" : ""}`}>
+      <div className="text-xs uppercase tracking-widest text-ivory-200/60">{label}</div>
       <div className="mt-1 font-display text-3xl font-bold">{value}</div>
     </div>
   );

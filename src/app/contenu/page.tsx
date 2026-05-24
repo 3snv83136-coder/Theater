@@ -49,7 +49,7 @@ export default function ContentPage() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="font-display text-2xl font-semibold">Création de contenu</h1>
-              <p className="text-sm text-stage-400">
+              <p className="text-sm text-ivory-200/60">
                 Brouillonnez ici, publiez quand c'est prêt, et l'article apparaît sur le site public.
               </p>
             </div>
@@ -108,9 +108,9 @@ export default function ContentPage() {
 
       <div className="card">
         <h2 className="section-title text-xl">Bibliothèque</h2>
-        <ul className="mt-4 divide-y divide-white/5">
+        <ul className="mt-4 divide-y divide-ivory-100/10">
           {state.posts.length === 0 && (
-            <li className="py-6 text-center text-sm text-stage-400">
+            <li className="py-6 text-center text-sm text-ivory-200/60">
               Aucun article pour l'instant.
             </li>
           )}
@@ -126,15 +126,15 @@ export default function ContentPage() {
                         en ligne
                       </span>
                     ) : (
-                      <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-stage-300">
+                      <span className="rounded-full bg-ivory-100/10 px-2 py-0.5 text-[10px] font-semibold uppercase text-ivory-200/80">
                         brouillon
                       </span>
                     )}
                   </div>
-                  <div className="text-xs text-stage-400">
+                  <div className="text-xs text-ivory-200/60">
                     par {p.author} · {new Date(p.createdAt).toLocaleDateString("fr-FR")}
                   </div>
-                  <p className="mt-1 line-clamp-2 text-sm text-stage-200">{p.excerpt}</p>
+                  <p className="mt-1 line-clamp-2 text-sm text-ivory-100">{p.excerpt}</p>
                 </div>
                 <div className="flex shrink-0 flex-col gap-2">
                   <button

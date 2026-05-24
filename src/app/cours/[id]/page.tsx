@@ -47,7 +47,7 @@ export default function CourseDetailPage() {
       <div className="card">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <Link href="/cours" className="text-xs text-stage-400 hover:underline">
+            <Link href="/cours" className="text-xs text-ivory-200/60 hover:underline">
               ← Tous les cours
             </Link>
             <h1 className="mt-2 font-display text-3xl font-bold">{course.title}</h1>
@@ -75,11 +75,11 @@ export default function CourseDetailPage() {
             </button>
           </div>
         </div>
-        <p className="mt-4 text-stage-200">{course.description}</p>
+        <p className="mt-4 text-ivory-100">{course.description}</p>
         {course.goals.length > 0 && (
           <div className="mt-4">
             <div className="label">Objectifs pédagogiques</div>
-            <ul className="ml-5 list-disc text-stage-200">
+            <ul className="ml-5 list-disc text-ivory-100">
               {course.goals.map((g, i) => (<li key={i}>{g}</li>))}
             </ul>
           </div>
@@ -90,21 +90,21 @@ export default function CourseDetailPage() {
         <div className="card">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="section-title text-xl">Mode interactif</h2>
-            <div className="text-xs text-stage-400">
+            <div className="text-xs text-ivory-200/60">
               Étape {step + 1} / {course.exercises.length} · Total {Math.round(totalSeconds / 60)} min
             </div>
           </div>
           {course.exercises.length === 0 ? (
-            <p className="text-stage-300">Aucun exercice défini.</p>
+            <p className="text-ivory-200/80">Aucun exercice défini.</p>
           ) : (
-            <div className="rounded-2xl bg-stage-900/50 p-6 ring-1 ring-white/5">
-              <div className="text-xs uppercase tracking-widest text-scene-300">
+            <div className="rounded-2xl bg-ink-900/50 p-6 ring-1 ring-ivory-100/10">
+              <div className="text-xs uppercase tracking-widest text-gold-300">
                 Exercice {step + 1} · {course.exercises[step].duration} min
               </div>
               <h3 className="mt-2 font-display text-2xl font-semibold">
                 {course.exercises[step].title}
               </h3>
-              <p className="mt-3 text-stage-200">{course.exercises[step].description}</p>
+              <p className="mt-3 text-ivory-100">{course.exercises[step].description}</p>
               <div className="mt-3 flex flex-wrap gap-1">
                 {course.exercises[step].goals.map((g) => (
                   <span key={g} className="chip">{g}</span>
@@ -123,7 +123,7 @@ export default function CourseDetailPage() {
                     <span
                       key={i}
                       className={`h-1.5 w-6 rounded-full ${
-                        i <= step ? "bg-scene-400" : "bg-white/10"
+                        i <= step ? "bg-gold-300" : "bg-ivory-100/10"
                       }`}
                     />
                   ))}
@@ -144,14 +144,14 @@ export default function CourseDetailPage() {
           <h2 className="section-title text-xl">Déroulé du cours</h2>
           <ol className="mt-4 space-y-3">
             {course.exercises.map((e, i) => (
-              <li key={e.id} className="rounded-xl bg-stage-900/50 p-4 ring-1 ring-white/5">
+              <li key={e.id} className="rounded-xl bg-ink-900/50 p-4 ring-1 ring-ivory-100/10">
                 <div className="flex items-center justify-between">
                   <div className="font-semibold">
                     {i + 1}. {e.title}
                   </div>
                   <span className="chip">{e.duration} min</span>
                 </div>
-                <p className="mt-1 text-sm text-stage-300">{e.description}</p>
+                <p className="mt-1 text-sm text-ivory-200/80">{e.description}</p>
               </li>
             ))}
           </ol>
@@ -160,7 +160,7 @@ export default function CourseDetailPage() {
 
       <div className="card">
         <h2 className="section-title text-xl">Envoyer ce cours par mail</h2>
-        <p className="mt-1 text-sm text-stage-400">
+        <p className="mt-1 text-sm text-ivory-200/60">
           Diffusez le détail du cours aux inscrits ou à une liste personnalisée.
         </p>
         <div className="mt-4 grid gap-3">
@@ -183,7 +183,7 @@ export default function CourseDetailPage() {
       {sessions.length > 0 && (
         <div className="card">
           <h2 className="section-title text-xl">Sessions planifiées</h2>
-          <ul className="mt-3 divide-y divide-white/5">
+          <ul className="mt-3 divide-y divide-ivory-100/10">
             {sessions.map((a) => (
               <li key={a.id} className="flex items-center justify-between py-2 text-sm">
                 <span>
@@ -194,7 +194,7 @@ export default function CourseDetailPage() {
                   })}{" "}
                   · {a.startTime}–{a.endTime}
                 </span>
-                <span className="text-stage-400">{a.location}</span>
+                <span className="text-ivory-200/60">{a.location}</span>
               </li>
             ))}
           </ul>

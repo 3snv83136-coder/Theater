@@ -2,18 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { IconPlus, IconSparkle } from "./Icons";
 
 const titles: Record<string, string> = {
-  "/": "Accueil",
-  "/cours": "Cours",
-  "/cours/nouveau": "Créer un cours",
-  "/generateurs": "Générateurs",
-  "/agenda": "Agenda",
-  "/inscription": "Inscriptions",
-  "/contenu": "Création de contenu",
-  "/spectacles": "Spectacles",
-  "/dashboard": "Dashboard",
-  "/site": "Site public (aperçu)",
+  "/": "Lever de rideau",
+  "/cours": "Programme des cours",
+  "/cours/nouveau": "Composer un cours",
+  "/generateurs": "Boîte à idées",
+  "/agenda": "Régie & agenda",
+  "/inscription": "Billetterie ateliers",
+  "/contenu": "Rédaction",
+  "/spectacles": "Affiche & spectacles",
+  "/dashboard": "Coulisses",
+  "/site": "Le site public",
 };
 
 export function Topbar() {
@@ -24,18 +25,23 @@ export function Topbar() {
     )?.[1] ?? "Impro 2pro";
 
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between border-b border-white/10 bg-stage-950/70 px-6 py-3 backdrop-blur lg:px-10">
-      <div>
-        <div className="text-xs uppercase tracking-widest text-stage-400">Impro 2pro</div>
-        <div className="font-display text-xl font-semibold">{matched}</div>
-      </div>
-      <div className="flex items-center gap-2">
-        <Link href="/inscription" className="btn-ghost">
-          + Inscription
-        </Link>
-        <Link href="/cours/nouveau" className="btn-primary">
-          ✨ Nouveau cours
-        </Link>
+    <header className="sticky top-0 z-20 border-b border-gold-300/10 bg-ink-950/85 backdrop-blur">
+      <div className="flex items-center justify-between px-6 py-4 lg:px-10">
+        <div className="flex items-center gap-4">
+          <div className="hidden h-10 w-1 rounded-full bg-gradient-to-b from-gold-300 to-velvet-500 sm:block" />
+          <div>
+            <div className="eyebrow">Acte en cours</div>
+            <div className="font-display text-2xl font-bold text-ivory-50">{matched}</div>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Link href="/inscription" className="btn-ghost">
+            <IconPlus size={14} /> Inscription
+          </Link>
+          <Link href="/cours/nouveau" className="btn-primary">
+            <IconSparkle size={14} /> Nouveau cours
+          </Link>
+        </div>
       </div>
     </header>
   );

@@ -94,7 +94,7 @@ function AgendaInner() {
             >
               ←
             </button>
-            <div className="rounded-xl bg-stage-900/60 px-4 py-2 text-sm ring-1 ring-white/10">
+            <div className="rounded-xl bg-ink-900/60 px-4 py-2 text-sm ring-1 ring-ivory-100/10">
               {weekStart.toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })} →{" "}
               {days[6].toLocaleDateString("fr-FR", { day: "2-digit", month: "long" })}
             </div>
@@ -142,20 +142,20 @@ function AgendaInner() {
             <div
               key={ds}
               className={`card min-h-[180px] p-3 ${
-                isToday ? "ring-1 ring-scene-400/40" : ""
+                isToday ? "ring-1 ring-gold-300/40" : ""
               }`}
             >
               <div className="flex items-baseline justify-between">
                 <div className="font-semibold capitalize">
                   {d.toLocaleDateString("fr-FR", { weekday: "short" })}
                 </div>
-                <div className="text-xs text-stage-400">
+                <div className="text-xs text-ivory-200/60">
                   {d.toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" })}
                 </div>
               </div>
               <div className="mt-2 space-y-2">
                 {entries.length === 0 && (
-                  <div className="text-xs text-stage-500">—</div>
+                  <div className="text-xs text-ivory-200/50">—</div>
                 )}
                 {entries.map((a) => {
                   const course = state.courses.find((c) => c.id === a.courseId);
@@ -163,7 +163,7 @@ function AgendaInner() {
                   return (
                     <div
                       key={a.id}
-                      className="group rounded-lg p-2 text-xs ring-1 ring-white/10"
+                      className="group rounded-lg p-2 text-xs ring-1 ring-ivory-100/10"
                       style={{
                         backgroundColor: teacher
                           ? `${teacher.color}22`
@@ -183,7 +183,7 @@ function AgendaInner() {
                         </button>
                       </div>
                       <div className="font-medium">{course?.title}</div>
-                      <div className="text-stage-300">{a.location}</div>
+                      <div className="text-ivory-200/80">{a.location}</div>
                       <div className="mt-1">
                         <TeacherBadge teacher={teacher} />
                       </div>

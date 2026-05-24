@@ -57,7 +57,7 @@ export default function GeneratorsPage() {
       <div className="card">
         <div className="flex flex-wrap items-center gap-3">
           <h1 className="font-display text-2xl font-semibold">Générateurs de jeu</h1>
-          <p className="text-sm text-stage-400">
+          <p className="text-sm text-ivory-200/60">
             Pour relancer l'inspiration en cours ou pendant une création.
           </p>
         </div>
@@ -68,8 +68,8 @@ export default function GeneratorsPage() {
               onClick={() => setTab(t.id)}
               className={`rounded-xl px-3 py-1.5 text-sm transition ${
                 tab === t.id
-                  ? "bg-scene-500 text-stage-950"
-                  : "bg-white/5 text-stage-200 hover:bg-white/10"
+                  ? "bg-gold-300 text-ink-950"
+                  : "bg-ivory-100/5 text-ivory-100 hover:bg-ivory-100/10"
               }`}
             >
               {t.icon} {t.label}
@@ -89,15 +89,15 @@ export default function GeneratorsPage() {
           <div className="mt-6 flex-1">
             {tab === "emotion" && (
               emotion ? (
-                <div className="rounded-2xl bg-stage-900/50 p-6 ring-1 ring-white/5">
-                  <div className="text-xs uppercase tracking-widest text-scene-300">Émotion</div>
+                <div className="rounded-2xl bg-ink-900/50 p-6 ring-1 ring-ivory-100/10">
+                  <div className="text-xs uppercase tracking-widest text-gold-300">Émotion</div>
                   <div className="mt-1 font-display text-4xl font-bold capitalize">
                     {emotion.emotion}
                   </div>
-                  <div className="mt-3 text-stage-200">
+                  <div className="mt-3 text-ivory-100">
                     Intensité : <span className="font-semibold">{emotion.intensity}</span>
                   </div>
-                  <div className="text-stage-200">{emotion.trigger}</div>
+                  <div className="text-ivory-100">{emotion.trigger}</div>
                 </div>
               ) : (
                 <Placeholder text="Cliquez sur Générer pour tirer une émotion." />
@@ -118,17 +118,17 @@ export default function GeneratorsPage() {
             )}
             {tab === "character" && (
               character ? (
-                <div className="rounded-2xl bg-stage-900/50 p-6 ring-1 ring-white/5">
-                  <div className="text-xs uppercase tracking-widest text-scene-300">Personnage</div>
+                <div className="rounded-2xl bg-ink-900/50 p-6 ring-1 ring-ivory-100/10">
+                  <div className="text-xs uppercase tracking-widest text-gold-300">Personnage</div>
                   <div className="mt-1 font-display text-3xl font-bold">{character.name}</div>
-                  <div className="text-stage-200">{character.job}</div>
+                  <div className="text-ivory-100">{character.job}</div>
                   <div className="mt-3 flex flex-wrap gap-1">
                     {character.traits.map((t) => (
                       <span key={t} className="chip">{t}</span>
                     ))}
                   </div>
-                  <div className="mt-3 text-stage-200"><b>Secret :</b> {character.secret}</div>
-                  <div className="text-stage-200"><b>Désir :</b> {character.desire}</div>
+                  <div className="mt-3 text-ivory-100"><b>Secret :</b> {character.secret}</div>
+                  <div className="text-ivory-100"><b>Désir :</b> {character.desire}</div>
                 </div>
               ) : (
                 <Placeholder text="Cliquez pour inventer un personnage." />
@@ -136,11 +136,11 @@ export default function GeneratorsPage() {
             )}
             {tab === "story" && (
               story ? (
-                <div className="rounded-2xl bg-stage-900/50 p-6 ring-1 ring-white/5">
-                  <div className="text-xs uppercase tracking-widest text-scene-300">Histoire</div>
+                <div className="rounded-2xl bg-ink-900/50 p-6 ring-1 ring-ivory-100/10">
+                  <div className="text-xs uppercase tracking-widest text-gold-300">Histoire</div>
                   <div className="mt-1 font-display text-2xl font-bold">{story.title}</div>
-                  <p className="mt-3 text-stage-200">{story.premise}</p>
-                  <p className="mt-2 text-velvet-300">{story.twist}</p>
+                  <p className="mt-3 text-ivory-100">{story.premise}</p>
+                  <p className="mt-2 text-velvet-200">{story.twist}</p>
                 </div>
               ) : (
                 <Placeholder text="Cliquez pour générer une mini-histoire complète." />
@@ -151,16 +151,16 @@ export default function GeneratorsPage() {
 
         <div className="card">
           <h3 className="section-title text-lg">Historique</h3>
-          <p className="mt-1 text-xs text-stage-400">
+          <p className="mt-1 text-xs text-ivory-200/60">
             Les 12 derniers tirages, toutes catégories.
           </p>
           <ul className="mt-3 space-y-2 text-sm">
             {history.length === 0 && (
-              <li className="text-stage-400">Rien encore. Lancez un tirage.</li>
+              <li className="text-ivory-200/60">Rien encore. Lancez un tirage.</li>
             )}
             {history.map((h, i) => (
-              <li key={i} className="rounded-lg bg-stage-900/50 px-3 py-2 ring-1 ring-white/5">
-                <span className="mr-2 text-xs uppercase tracking-widest text-stage-400">
+              <li key={i} className="rounded-lg bg-ink-900/50 px-3 py-2 ring-1 ring-ivory-100/10">
+                <span className="mr-2 text-xs uppercase tracking-widest text-ivory-200/60">
                   {h.kind}
                 </span>
                 {h.text}
@@ -175,7 +175,7 @@ export default function GeneratorsPage() {
 
 function Placeholder({ text }: { text: string }) {
   return (
-    <div className="grid h-full place-items-center rounded-2xl border border-dashed border-white/15 bg-stage-900/30 p-12 text-center text-stage-400">
+    <div className="grid h-full place-items-center rounded-2xl border border-dashed border-white/15 bg-ink-900/30 p-12 text-center text-ivory-200/60">
       {text}
     </div>
   );
@@ -183,9 +183,9 @@ function Placeholder({ text }: { text: string }) {
 
 function Field({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl bg-stage-900/50 p-4 ring-1 ring-white/5">
-      <div className="text-xs uppercase tracking-widest text-scene-300">{label}</div>
-      <div className="mt-1 text-stage-100">{value}</div>
+    <div className="rounded-xl bg-ink-900/50 p-4 ring-1 ring-ivory-100/10">
+      <div className="text-xs uppercase tracking-widest text-gold-300">{label}</div>
+      <div className="mt-1 text-ivory-100">{value}</div>
     </div>
   );
 }

@@ -24,8 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex flex-1 flex-col">
               <Topbar />
               <main className="flex-1 px-6 py-8 lg:px-10">{children}</main>
-              <footer className="border-t border-white/10 px-6 py-4 text-center text-xs text-stage-400">
-                Impro 2pro © {new Date().getFullYear()} · Compagnie de théâtre d'improvisation
+              <footer className="border-t border-gold-300/10 px-6 py-5 text-center">
+                <div className="font-marquee text-sm uppercase tracking-[0.3em] text-gold-300/70">
+                  ★ Impro 2pro · {new Date().getFullYear()} · Improvisation théâtrale ★
+                </div>
               </footer>
             </div>
           </div>

@@ -107,17 +107,17 @@ export function SplashScreen() {
         </div>
 
         <h1
-          className="mt-8 font-display text-6xl font-black tracking-wide text-amber-100"
+          className="mt-8 font-marquee text-7xl font-black tracking-wide text-amber-100 md:text-8xl"
           style={{ textShadow: "0 6px 30px rgba(252,211,77,0.5)" }}
         >
-          IMPRO<span className="text-red-500">2</span>PRO
+          IMPRO<span className="text-red-400">2</span>PRO
         </h1>
-        <div className="mt-2 inline-flex items-center gap-3 text-amber-200">
-          <span className="text-2xl">≼</span>
-          <span className="font-display text-2xl uppercase tracking-[0.3em]">
+        <div className="mt-3 inline-flex items-center gap-3 text-amber-200/90">
+          <span className="h-px w-10 bg-amber-300/60" />
+          <span className="font-display text-xl uppercase tracking-[0.3em]">
             La troupe entre en scène
           </span>
-          <span className="text-2xl">≽</span>
+          <span className="h-px w-10 bg-amber-300/60" />
         </div>
 
         <button
