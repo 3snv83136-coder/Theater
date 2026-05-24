@@ -17,14 +17,16 @@ import {
 } from "@/components/Icons";
 
 const TINTS = {
-  violet: "#a78bfa",
-  emerald: "#34d399",
-  gold: "#ecbe4a",
-  coral: "#fb7185",
-  sky: "#38bdf8",
-  orange: "#fb923c",
-  rose: "#f472b6",
-  mint: "#5eead4",
+  violet: "#c026ff",
+  emerald: "#00ffa3",
+  gold: "#ffd60a",
+  coral: "#ff4d6d",
+  sky: "#00d4ff",
+  orange: "#ff8c1a",
+  rose: "#ff3ea5",
+  mint: "#2ee6cf",
+  lime: "#c0fa00",
+  magenta: "#ff00d4",
 } as const;
 type Tint = keyof typeof TINTS;
 
@@ -157,8 +159,16 @@ export default function HomePage() {
 
   return (
     <div className="space-y-6 sm:space-y-8">
-      {/* HERO compact */}
-      <section className="relative overflow-hidden rounded-3xl border border-gold-300/30 bg-gradient-to-br from-[#0e1a3a] via-[#1a1140] to-[#0a1733] px-5 py-7 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.6)] sm:px-10 sm:py-10">
+      {/* HERO compact flashy */}
+      <section
+        className="relative overflow-hidden rounded-3xl border-2 px-5 py-7 sm:px-10 sm:py-10"
+        style={{
+          borderColor: "#ffd60a",
+          background:
+            "radial-gradient(800px 400px at 80% 20%, rgba(192, 38, 255, 0.45), transparent 60%), radial-gradient(700px 400px at 20% 80%, rgba(255, 62, 165, 0.4), transparent 60%), linear-gradient(135deg, #1a0040 0%, #2d0a5e 50%, #160043 100%)",
+          boxShadow: "0 0 40px rgba(255, 214, 10, 0.4), 0 25px 60px -20px rgba(0,0,0,0.7)",
+        }}
+      >
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-6 opacity-80 sm:w-10"
           style={{
@@ -182,9 +192,20 @@ export default function HomePage() {
             <span className="eyebrow">Tout l'univers de la troupe</span>
             <span className="h-px w-6 bg-gold-300/60 sm:w-10" />
           </div>
-          <h1 className="mt-3 font-marquee text-4xl font-black leading-[0.95] text-ivory-50 sm:text-6xl">
-            IMPRO<span className="text-velvet-400">2</span>PRO
-            <span className="ml-2 inline-block align-top text-xl text-gold-300 sm:ml-3 sm:text-2xl">
+          <h1
+            className="mt-3 font-marquee text-4xl font-black leading-[0.95] sm:text-6xl"
+            style={{
+              color: "#fff",
+              textShadow: "0 0 30px rgba(255, 214, 10, 0.7), 0 0 60px rgba(192, 38, 255, 0.4)",
+            }}
+          >
+            IMPRO
+            <span style={{ color: "#ff3ea5", textShadow: "0 0 25px rgba(255, 62, 165, 0.85)" }}>2</span>
+            PRO
+            <span
+              className="ml-2 inline-block align-top text-xl sm:ml-3 sm:text-2xl"
+              style={{ color: "#ffd60a", textShadow: "0 0 18px rgba(255, 214, 10, 0.9)" }}
+            >
               ★
             </span>
           </h1>
@@ -236,13 +257,26 @@ function TileCard({ tile }: { tile: Tile }) {
   return (
     <Link
       href={tile.href}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border bg-white/[0.05] p-4 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)] backdrop-blur transition hover:-translate-y-1 hover:bg-white/[0.08] sm:p-5"
-      style={{ borderColor: `${color}55` }}
+      className="group relative flex flex-col overflow-hidden rounded-2xl border-2 p-4 backdrop-blur transition hover:-translate-y-1 sm:p-5"
+      style={{
+        borderColor: `${color}aa`,
+        background: `linear-gradient(160deg, ${color}22 0%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0.02) 100%)`,
+        boxShadow: `0 12px 35px -10px ${color}55, 0 0 0 1px ${color}22, inset 0 1px 0 rgba(255,255,255,0.1)`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = `0 18px 45px -10px ${color}aa, 0 0 25px ${color}66, inset 0 1px 0 rgba(255,255,255,0.15)`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = `0 12px 35px -10px ${color}55, 0 0 0 1px ${color}22, inset 0 1px 0 rgba(255,255,255,0.1)`;
+      }}
     >
-      {/* Top color bar */}
+      {/* Top neon bar */}
       <div
-        className="absolute inset-x-0 top-0 h-1"
-        style={{ background: `linear-gradient(90deg, ${color}, ${color}55)` }}
+        className="absolute inset-x-0 top-0 h-1.5"
+        style={{
+          background: `linear-gradient(90deg, ${color}, ${color}cc, ${color})`,
+          boxShadow: `0 0 18px ${color}, 0 0 6px ${color}`,
+        }}
       />
       {tile.pulse && (
         <div className="absolute inset-x-3 -top-[5px] flex justify-between">
@@ -261,16 +295,24 @@ function TileCard({ tile }: { tile: Tile }) {
 
       <div className="flex items-start justify-between gap-2">
         <div
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-xl shadow-sm"
-          style={{ background: `${color}22`, color }}
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border-2"
+          style={{
+            background: `${color}33`,
+            borderColor: `${color}88`,
+            color,
+            boxShadow: `0 0 18px ${color}66, inset 0 0 12px ${color}33`,
+          }}
         >
           <tile.Icon size={20} />
         </div>
         {tile.stat !== null && (
           <div className="text-right">
             <div
-              className="font-marquee text-3xl font-black leading-none text-ivory-50 sm:text-4xl"
-              style={{ textShadow: `0 0 18px ${color}55` }}
+              className="font-marquee text-4xl font-black leading-none sm:text-5xl"
+              style={{
+                color,
+                textShadow: `0 0 22px ${color}aa, 0 0 8px ${color}`,
+              }}
             >
               {tile.stat.toString().padStart(2, "0")}
             </div>
@@ -280,24 +322,29 @@ function TileCard({ tile }: { tile: Tile }) {
 
       <div className="mt-3 flex-1">
         <div
-          className="text-[10px] font-bold uppercase tracking-[0.25em]"
-          style={{ color }}
+          className="text-[10px] font-black uppercase tracking-[0.25em]"
+          style={{ color, textShadow: `0 0 10px ${color}88` }}
         >
           {tile.statLabel ?? tile.cta}
         </div>
-        <h3 className="mt-1 font-display text-base font-semibold leading-tight text-ivory-50 sm:text-lg">
+        <h3 className="mt-1 font-display text-base font-bold leading-tight text-white sm:text-lg">
           {tile.title}
         </h3>
-        <p className="mt-1 line-clamp-2 text-xs text-ivory-200/70 sm:text-[13px]">
+        <p className="mt-1 line-clamp-2 text-xs text-white/75 sm:text-[13px]">
           {tile.subtitle}
         </p>
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-ivory-200/60 transition group-hover:text-ivory-50">
+      <div className="mt-4 flex items-center justify-between text-[11px] font-black uppercase tracking-widest text-white/80 transition group-hover:text-white">
         <span>{tile.cta}</span>
         <span
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full transition group-hover:translate-x-0.5"
-          style={{ background: `${color}22`, color }}
+          className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 transition group-hover:translate-x-0.5"
+          style={{
+            background: `${color}44`,
+            borderColor: color,
+            color,
+            boxShadow: `0 0 12px ${color}66`,
+          }}
         >
           <IconArrowRight size={14} />
         </span>
