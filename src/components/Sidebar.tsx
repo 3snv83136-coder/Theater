@@ -26,6 +26,7 @@ const links = [
   { href: "/spectacles", label: "Spectacles", Icon: IconTicket },
   { href: "/dashboard", label: "Dashboard", Icon: IconGauge },
   { href: "/site", label: "Site public", Icon: IconGlobe },
+  { href: "/intro", label: "Rejouer l'intro", Icon: IconSparkle },
 ];
 
 export function Sidebar() {

@@ -11,10 +11,10 @@
 html,
 body {
   background:
-    radial-gradient(1200px 700px at 85% -10%, rgba(199,132,26,0.18), transparent 60%),
-    radial-gradient(900px 600px at -10% 30%, rgba(168,42,68,0.22), transparent 60%),
-    radial-gradient(800px 500px at 50% 110%, rgba(168,42,68,0.18), transparent 60%),
-    #0a0709;
+    radial-gradient(1200px 700px at 85% -10%, rgba(231, 180, 84, 0.40), transparent 55%),
+    radial-gradient(900px 600px at -10% 30%, rgba(217, 143, 140, 0.30), transparent 60%),
+    radial-gradient(900px 600px at 50% 110%, rgba(241, 206, 113, 0.35), transparent 60%),
+    linear-gradient(180deg, #2a1a14 0%, #1d130f 100%);
   color: #f5efe0;
   min-height: 100vh;
   letter-spacing: 0.005em;
@@ -22,7 +22,7 @@ body {
 
 ::selection {
   background: #ecbe4a;
-  color: #100e0c;
+  color: #2a1a14;
 }
 
 @layer components {
@@ -31,33 +31,33 @@ body {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-300 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-ink-900 shadow-marquee transition hover:bg-gold-200 active:scale-[0.98];
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-100/15 bg-ivory-100/5 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-100 transition hover:border-gold-300/50 hover:bg-ivory-100/10 hover:text-gold-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-100/20 bg-ivory-100/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition hover:border-gold-300/60 hover:bg-ivory-100/15 hover:text-gold-200;
   }
   .btn-danger {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-velvet-700 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition hover:bg-velvet-500;
   }
   .btn-outline-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold-300/60 bg-transparent px-5 py-2 text-sm font-bold uppercase tracking-wider text-gold-200 transition hover:bg-gold-300 hover:text-ink-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold-300/70 bg-transparent px-5 py-2 text-sm font-bold uppercase tracking-wider text-gold-200 transition hover:bg-gold-300 hover:text-ink-900;
   }
 
-  /* ------- Cartes ------- */
+  /* ------- Cartes (warm "stage wood" tone) ------- */
   .card {
-    @apply rounded-2xl border border-ivory-100/10 bg-gradient-to-b from-ink-800/80 to-ink-900/80 p-5 shadow-playbill backdrop-blur;
+    @apply rounded-2xl border border-gold-300/15 bg-gradient-to-b from-[#3a2418]/85 to-[#251610]/85 p-5 shadow-playbill backdrop-blur;
   }
   .card-hover {
-    @apply transition hover:-translate-y-0.5 hover:border-gold-300/40 hover:shadow-marquee;
+    @apply transition hover:-translate-y-0.5 hover:border-gold-300/50 hover:shadow-marquee;
   }
   .card-playbill {
     @apply relative rounded-2xl bg-ivory-50 p-6 text-ink-900 shadow-playbill;
     background-image:
-      radial-gradient(circle at 30% 20%, rgba(160,138,77,0.06) 0, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(160,138,77,0.06) 0, transparent 50%);
+      radial-gradient(circle at 30% 20%, rgba(160,138,77,0.07) 0, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(160,138,77,0.07) 0, transparent 50%);
   }
   .ticket {
     position: relative;
     --notch: 12px;
-    background: linear-gradient(180deg, #1a1815 0%, #100e0c 100%);
-    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(244,216,137,0.12);
+    background: linear-gradient(180deg, #2a1a14 0%, #1a0f0a 100%);
+    box-shadow: 0 18px 40px -10px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(244,216,137,0.18);
     border-radius: 16px;
     -webkit-mask:
       radial-gradient(circle at 32% 100%, transparent var(--notch), #000 calc(var(--notch) + 1px)) bottom/100% 100% no-repeat,
@@ -66,15 +66,15 @@ body {
             mask-composite: intersect;
   }
   .ticket-row {
-    @apply flex items-stretch overflow-hidden rounded-2xl border border-ivory-100/10 bg-gradient-to-r from-ink-800/90 to-ink-900/90 shadow-playbill;
+    @apply flex items-stretch overflow-hidden rounded-2xl border border-gold-300/15 bg-gradient-to-r from-[#3a2418]/90 to-[#251610]/90 shadow-playbill;
   }
   .ticket-stub {
-    @apply relative flex w-20 shrink-0 flex-col items-center justify-center border-r border-dashed border-gold-300/30 bg-velvet-800/40 py-4 text-center;
+    @apply relative flex w-20 shrink-0 flex-col items-center justify-center border-r border-dashed border-gold-300/40 bg-velvet-800/50 py-4 text-center;
   }
 
   /* ------- Champs ------- */
   .input {
-    @apply w-full rounded-xl border border-ivory-100/15 bg-ink-900/60 px-3 py-2.5 text-sm text-ivory-50 placeholder:text-ink-400 outline-none transition focus:border-gold-300 focus:ring-1 focus:ring-gold-300/40;
+    @apply w-full rounded-xl border border-ivory-100/20 bg-[#1a0f0a]/70 px-3 py-2.5 text-sm text-ivory-50 placeholder:text-ivory-200/50 outline-none transition focus:border-gold-300 focus:ring-1 focus:ring-gold-300/50;
   }
   .label {
     @apply mb-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300;
@@ -82,13 +82,13 @@ body {
 
   /* ------- Étiquettes ------- */
   .chip {
-    @apply inline-flex items-center gap-1 rounded-full border border-ivory-100/15 bg-ivory-100/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-ivory-100;
+    @apply inline-flex items-center gap-1 rounded-full border border-ivory-100/20 bg-ivory-100/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-ivory-50;
   }
   .chip-gold {
-    @apply inline-flex items-center gap-1 rounded-full border border-gold-300/40 bg-gold-300/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-gold-200;
+    @apply inline-flex items-center gap-1 rounded-full border border-gold-300/50 bg-gold-300/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-gold-200;
   }
   .chip-velvet {
-    @apply inline-flex items-center gap-1 rounded-full border border-velvet-400/40 bg-velvet-700/30 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-velvet-100;
+    @apply inline-flex items-center gap-1 rounded-full border border-velvet-400/50 bg-velvet-700/35 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-velvet-100;
   }
 
   /* ------- Titres ------- */
@@ -99,7 +99,6 @@ body {
     @apply text-[10px] font-bold uppercase tracking-[0.3em] text-gold-300;
   }
 
-  /* ------- Marquise ------- */
   .marquee-frame {
     @apply relative rounded-3xl border-2 border-gold-300/60 p-1 shadow-marquee;
   }
@@ -107,8 +106,8 @@ body {
 
 /* ------- Animations ------- */
 @keyframes bulbPulse {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 6px rgba(252,211,77,0.5); }
-  50% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 18px rgba(252,211,77,1); }
+  0%, 100% { opacity: 0.5; transform: scale(0.9); box-shadow: 0 0 6px rgba(252,211,77,0.6); }
+  50% { opacity: 1; transform: scale(1.08); box-shadow: 0 0 22px rgba(252,211,77,1); }
 }
 
 @keyframes flicker {
@@ -126,22 +125,37 @@ body {
   100% { background-position: 200% 0; }
 }
 .shimmer {
-  background: linear-gradient(110deg, transparent 35%, rgba(244,216,137,0.25) 50%, transparent 65%);
+  background: linear-gradient(110deg, transparent 35%, rgba(244,216,137,0.3) 50%, transparent 65%);
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
 
-@keyframes risecurtain {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+@keyframes posterRise {
+  0% { transform: translateY(40px) scale(0.92); opacity: 0; }
+  60% { opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes titleGlow {
+  0%, 100% { text-shadow: 0 0 25px rgba(231, 180, 84, 0.5), 0 6px 0 rgba(0,0,0,0.25); }
+  50% { text-shadow: 0 0 55px rgba(231, 180, 84, 0.95), 0 6px 0 rgba(0,0,0,0.25); }
+}
+@keyframes spotSweep {
+  0%, 100% { transform: rotate(-15deg) translateX(-20px); opacity: 0.5; }
+  50% { transform: rotate(15deg) translateX(20px); opacity: 0.9; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes confettiFall {
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
 .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
-.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(244,216,137,0.2); border-radius: 4px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(244,216,137,0.25); border-radius: 4px; }
 
-/* Velvet curtain texture utility */
 .velvet-bg {
   background:
-    repeating-linear-gradient(90deg, rgba(0,0,0,0.18) 0px, transparent 1px, transparent 6px, rgba(0,0,0,0.18) 7px),
-    linear-gradient(180deg, #4a0d1c 0%, #6e1429 100%);
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.2) 0px, transparent 1px, transparent 6px, rgba(0,0,0,0.2) 7px),
+    linear-gradient(180deg, #6e1429 0%, #891b33 100%);
 }
