@@ -50,3 +50,8 @@ body {
 
 .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
 .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+@keyframes bulbPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); box-shadow: 0 0 6px rgba(252,211,77,0.5); }
+  50% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 18px rgba(252,211,77,1); }
+}

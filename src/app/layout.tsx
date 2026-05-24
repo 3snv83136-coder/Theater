@@ -4,6 +4,7 @@ import { Sidebar } from "@/components/Sidebar";
 import { StoreProvider } from "@/lib/store";
 import { Topbar } from "@/components/Topbar";
 import { ToastProvider } from "@/components/Toast";
+import { SplashScreen } from "@/components/SplashScreen";
 
 export const metadata: Metadata = {
   title: "Impro 2pro — Compagnie de théâtre",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <StoreProvider>
           <ToastProvider>
+          <SplashScreen />
           <div className="flex min-h-screen">
             <Sidebar />
             <div className="flex flex-1 flex-col">
