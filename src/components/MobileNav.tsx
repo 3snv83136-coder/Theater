@@ -18,6 +18,7 @@ import {
 
 const links = [
   { href: "/", label: "Accueil", Icon: IconMasks },
+  { href: "/prof", label: "Espace prof", Icon: IconMasks },
   { href: "/cours", label: "Cours", Icon: IconBook },
   { href: "/cours/nouveau", label: "Créer un cours", Icon: IconSparkle },
   { href: "/generateurs", label: "Générateurs", Icon: IconDice },

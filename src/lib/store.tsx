@@ -51,6 +51,8 @@ const initialState: State = {
 
 type StoreApi = {
   state: State;
+  currentTeacherId: string | null;
+  setCurrentTeacherId: (id: string | null) => void;
   addCourse: (c: Course) => void;
   updateCourse: (id: string, patch: Partial<Course>) => void;
   removeCourse: (id: string) => void;
@@ -62,6 +64,7 @@ type StoreApi = {
   updatePost: (id: string, patch: Partial<ContentPost>) => void;
   removePost: (id: string) => void;
   addShow: (s: Show) => void;
+  updateShow: (id: string, patch: Partial<Show>) => void;
   removeShow: (id: string) => void;
   sendMail: (m: Omit<MailLog, "id" | "sentAt">) => MailLog;
   resetAll: () => void;
@@ -69,9 +72,20 @@ type StoreApi = {
 
 const StoreContext = createContext<StoreApi | null>(null);
 
+const TEACHER_KEY = "impro2pro:currentTeacher";
+
 export function StoreProvider({ children }: { children: React.ReactNode }) {
   const [state, setState] = useState<State>(initialState);
+  const [currentTeacherId, setCurrentTeacherIdState] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+
+  const setCurrentTeacherId = useCallback((id: string | null) => {
+    setCurrentTeacherIdState(id);
+    try {
+      if (id) localStorage.setItem(TEACHER_KEY, id);
+      else localStorage.removeItem(TEACHER_KEY);
+    } catch {}
+  }, []);
 
   useEffect(() => {
     try {
@@ -80,6 +94,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         const parsed = JSON.parse(raw) as State;
         setState({ ...initialState, ...parsed });
       }
+      const tid = localStorage.getItem(TEACHER_KEY);
+      if (tid) setCurrentTeacherIdState(tid);
     } catch {
       // ignore
     }
@@ -101,6 +117,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
 
     return {
       state,
+      currentTeacherId,
+      setCurrentTeacherId,
       addCourse: (c) => setState((s) => ({ ...s, courses: [c, ...s.courses] })),
       updateCourse: (id, patch) =>
         setState((s) => ({ ...s, courses: patchList(s.courses, id, patch) })),
@@ -123,6 +141,8 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       removePost: (id) =>
         setState((s) => ({ ...s, posts: s.posts.filter((p) => p.id !== id) })),
       addShow: (sh) => setState((s) => ({ ...s, shows: [sh, ...s.shows] })),
+      updateShow: (id, patch) =>
+        setState((s) => ({ ...s, shows: patchList(s.shows, id, patch) })),
       removeShow: (id) =>
         setState((s) => ({ ...s, shows: s.shows.filter((sh) => sh.id !== id) })),
       sendMail: (m) => {
@@ -136,7 +156,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       },
       resetAll: () => setState(initialState),
     };
-  }, [state]);
+  }, [state, currentTeacherId, setCurrentTeacherId]);
 
   return <StoreContext.Provider value={api}>{children}</StoreContext.Provider>;
 }

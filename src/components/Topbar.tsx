@@ -11,9 +11,11 @@ import {
   IconSparkle,
 } from "./Icons";
 import { MobileNav } from "./MobileNav";
+import { useStore } from "@/lib/store";
 
 const titles: Record<string, string> = {
   "/": "Lever de rideau",
+  "/prof": "Espace prof",
   "/cours": "Programme des cours",
   "/cours/nouveau": "Composer un cours",
   "/generateurs": "Boîte à idées",
@@ -28,6 +30,8 @@ const titles: Record<string, string> = {
 export function Topbar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { state, currentTeacherId } = useStore();
+  const me = state.teachers.find((t) => t.id === currentTeacherId);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const matched =
@@ -83,8 +87,32 @@ export function Topbar() {
 
           <div className="flex items-center gap-2">
             <Link
+              href="/prof"
+              className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-ivory-100 transition hover:border-gold-300/50 hover:bg-white/10 md:inline-flex"
+              title={me ? `Connecté(e) en tant que ${me.name}` : "Choisir un prof"}
+            >
+              {me ? (
+                <>
+                  <span
+                    className="grid h-6 w-6 place-items-center rounded-full font-marquee text-[11px] font-black text-ink-900"
+                    style={{ backgroundColor: me.color }}
+                  >
+                    {me.name.charAt(0)}
+                  </span>
+                  <span>{me.name}</span>
+                </>
+              ) : (
+                <>
+                  <span className="grid h-6 w-6 place-items-center rounded-full bg-white/10 text-[11px]">
+                    ?
+                  </span>
+                  <span>Choisir un prof</span>
+                </>
+              )}
+            </Link>
+            <Link
               href="/inscription"
-              className="btn-ghost hidden md:inline-flex"
+              className="btn-ghost hidden lg:inline-flex"
               title="Nouvelle inscription"
             >
               <IconPlus size={14} /> Inscription

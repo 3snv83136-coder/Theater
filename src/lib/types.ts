@@ -22,13 +22,15 @@ export type Course = {
   title: string;
   level: Level;
   teacherId: string;
-  duration: number; // minutes
+  duration: number;
   description: string;
   goals: string[];
   exercises: Exercise[];
   tags: string[];
   interactive: boolean;
   createdWithAI: boolean;
+  capacity?: number;
+  pricePerSessionCents?: number;
   createdAt: string;
 };
 
@@ -36,8 +38,8 @@ export type AgendaEntry = {
   id: string;
   courseId: string;
   teacherId: string;
-  date: string; // ISO date (yyyy-mm-dd)
-  startTime: string; // HH:MM
+  date: string;
+  startTime: string;
   endTime: string;
   location: string;
   notes?: string;
@@ -51,9 +53,14 @@ export type Inscription = {
   phone?: string;
   level: Level;
   preferredTeacherId?: string;
+  courseIds?: string[];
+  trialDate?: string;
+  paymentStatus?: "Non payé" | "Acompte" | "Payé" | "Saison complète";
+  attendance?: number;
   message?: string;
+  notes?: string;
   createdAt: string;
-  status: "Nouveau" | "Contacté" | "Confirmé" | "Annulé";
+  status: "Nouveau" | "Contacté" | "Actif" | "Archivé";
 };
 
 export type ContentPost = {
@@ -68,15 +75,28 @@ export type ContentPost = {
   createdAt: string;
 };
 
+export type Rehearsal = {
+  id: string;
+  date: string; // ISO
+  location?: string;
+  notes?: string;
+};
+
 export type Show = {
   id: string;
   title: string;
-  date: string; // ISO
+  date: string;
   venue: string;
   pitch: string;
-  cast: string[]; // teacher ids
+  cast: string[];
   priceCents: number;
   ticketUrl?: string;
+  posterUrl?: string;
+  status: "Répétition" | "À l'affiche" | "Archivé";
+  capacity?: number;
+  soldTickets?: number;
+  rehearsals?: Rehearsal[];
+  pressKitUrl?: string;
   createdAt: string;
 };
 
