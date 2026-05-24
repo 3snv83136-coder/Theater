@@ -6,15 +6,25 @@
 
 :root {
   color-scheme: dark;
+  /* Section accents — variables CSS pour colorer les containers */
+  --accent-rose: #f472b6;
+  --accent-gold: #ecbe4a;
+  --accent-emerald: #34d399;
+  --accent-sky: #38bdf8;
+  --accent-violet: #a78bfa;
+  --accent-orange: #fb923c;
+  --accent-coral: #fb7185;
+  --accent-mint: #5eead4;
 }
 
 html,
 body {
   background:
-    radial-gradient(1200px 700px at 85% -10%, rgba(231, 180, 84, 0.40), transparent 55%),
-    radial-gradient(900px 600px at -10% 30%, rgba(217, 143, 140, 0.30), transparent 60%),
-    radial-gradient(900px 600px at 50% 110%, rgba(241, 206, 113, 0.35), transparent 60%),
-    linear-gradient(180deg, #2a1a14 0%, #1d130f 100%);
+    radial-gradient(1200px 700px at 85% -10%, rgba(99, 102, 241, 0.35), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, rgba(168, 85, 247, 0.25), transparent 60%),
+    radial-gradient(900px 600px at 50% 110%, rgba(236, 190, 74, 0.22), transparent 60%),
+    radial-gradient(1100px 700px at 30% 50%, rgba(56, 189, 248, 0.18), transparent 70%),
+    linear-gradient(180deg, #0a1733 0%, #0c1e3d 40%, #08152b 100%);
   color: #f5efe0;
   min-height: 100vh;
   letter-spacing: 0.005em;
@@ -22,41 +32,65 @@ body {
 
 ::selection {
   background: #ecbe4a;
-  color: #2a1a14;
+  color: #0a1733;
 }
 
 @layer components {
   /* ------- Boutons ------- */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-300 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-ink-900 shadow-marquee transition hover:bg-gold-200 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-300 px-5 py-2.5 text-sm font-bold uppercase tracking-wider text-[#0a1733] shadow-marquee transition hover:bg-gold-200 active:scale-[0.98];
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-100/20 bg-ivory-100/10 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition hover:border-gold-300/60 hover:bg-ivory-100/15 hover:text-gold-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-100/20 bg-white/5 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition hover:border-gold-300/60 hover:bg-white/10 hover:text-gold-200;
   }
   .btn-danger {
     @apply inline-flex items-center justify-center gap-2 rounded-full bg-velvet-700 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition hover:bg-velvet-500;
   }
   .btn-outline-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold-300/70 bg-transparent px-5 py-2 text-sm font-bold uppercase tracking-wider text-gold-200 transition hover:bg-gold-300 hover:text-ink-900;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold-300/70 bg-transparent px-5 py-2 text-sm font-bold uppercase tracking-wider text-gold-200 transition hover:bg-gold-300 hover:text-[#0a1733];
   }
 
-  /* ------- Cartes (warm "stage wood" tone) ------- */
+  /* ------- Cartes ------- */
   .card {
-    @apply rounded-2xl border border-gold-300/15 bg-gradient-to-b from-[#3a2418]/85 to-[#251610]/85 p-5 shadow-playbill backdrop-blur;
+    @apply rounded-2xl border border-white/15 bg-white/[0.07] p-5 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)] backdrop-blur;
   }
   .card-hover {
-    @apply transition hover:-translate-y-0.5 hover:border-gold-300/50 hover:shadow-marquee;
+    @apply transition hover:-translate-y-0.5 hover:border-gold-300/50 hover:bg-white/[0.1] hover:shadow-marquee;
   }
+
+  /* Container coloré : .container-tint avec data-tint */
+  .tinted {
+    position: relative;
+    border-radius: 1.25rem;
+    padding: 1.25rem;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+      color-mix(in srgb, var(--tint, #38bdf8) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tint, #38bdf8) 35%, transparent);
+    box-shadow:
+      0 10px 30px -10px rgba(0,0,0,0.4),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+  }
+  .tinted::before {
+    content: "";
+    position: absolute;
+    inset: -1px -1px auto -1px;
+    height: 4px;
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+    background: linear-gradient(90deg, var(--tint, #38bdf8), color-mix(in srgb, var(--tint, #38bdf8) 30%, transparent));
+  }
+  .tinted .eyebrow { color: var(--tint, #ecbe4a); }
+  .tinted .label { color: var(--tint, #ecbe4a); }
+
   .card-playbill {
-    @apply relative rounded-2xl bg-ivory-50 p-6 text-ink-900 shadow-playbill;
-    background-image:
-      radial-gradient(circle at 30% 20%, rgba(160,138,77,0.07) 0, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(160,138,77,0.07) 0, transparent 50%);
+    @apply relative rounded-2xl bg-ivory-50 p-6 text-ink-900 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.4)];
   }
   .ticket {
     position: relative;
     --notch: 12px;
-    background: linear-gradient(180deg, #2a1a14 0%, #1a0f0a 100%);
+    background: linear-gradient(180deg, #122044 0%, #0a1733 100%);
     box-shadow: 0 18px 40px -10px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(244,216,137,0.18);
     border-radius: 16px;
     -webkit-mask:
@@ -66,15 +100,15 @@ body {
             mask-composite: intersect;
   }
   .ticket-row {
-    @apply flex items-stretch overflow-hidden rounded-2xl border border-gold-300/15 bg-gradient-to-r from-[#3a2418]/90 to-[#251610]/90 shadow-playbill;
+    @apply flex items-stretch overflow-hidden rounded-2xl border border-white/15 bg-white/[0.06] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.45)] backdrop-blur;
   }
   .ticket-stub {
-    @apply relative flex w-20 shrink-0 flex-col items-center justify-center border-r border-dashed border-gold-300/40 bg-velvet-800/50 py-4 text-center;
+    @apply relative flex w-20 shrink-0 flex-col items-center justify-center border-r border-dashed border-gold-300/40 bg-velvet-800/40 py-4 text-center;
   }
 
   /* ------- Champs ------- */
   .input {
-    @apply w-full rounded-xl border border-ivory-100/20 bg-[#1a0f0a]/70 px-3 py-2.5 text-sm text-ivory-50 placeholder:text-ivory-200/50 outline-none transition focus:border-gold-300 focus:ring-1 focus:ring-gold-300/50;
+    @apply w-full rounded-xl border border-white/20 bg-white/5 px-3 py-2.5 text-sm text-ivory-50 placeholder:text-ivory-200/40 outline-none transition focus:border-gold-300 focus:ring-2 focus:ring-gold-300/30;
   }
   .label {
     @apply mb-1 block text-[10px] font-bold uppercase tracking-[0.2em] text-gold-300;
@@ -82,13 +116,13 @@ body {
 
   /* ------- Étiquettes ------- */
   .chip {
-    @apply inline-flex items-center gap-1 rounded-full border border-ivory-100/20 bg-ivory-100/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-ivory-50;
+    @apply inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-ivory-50;
   }
   .chip-gold {
     @apply inline-flex items-center gap-1 rounded-full border border-gold-300/50 bg-gold-300/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-gold-200;
   }
   .chip-velvet {
-    @apply inline-flex items-center gap-1 rounded-full border border-velvet-400/50 bg-velvet-700/35 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-velvet-100;
+    @apply inline-flex items-center gap-1 rounded-full border border-velvet-400/50 bg-velvet-700/30 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.15em] text-velvet-100;
   }
 
   /* ------- Titres ------- */
@@ -109,17 +143,13 @@ body {
   0%, 100% { opacity: 0.5; transform: scale(0.9); box-shadow: 0 0 6px rgba(252,211,77,0.6); }
   50% { opacity: 1; transform: scale(1.08); box-shadow: 0 0 22px rgba(252,211,77,1); }
 }
-
 @keyframes flicker {
   0%, 100% { opacity: 1; }
-  92% { opacity: 1; }
   93% { opacity: 0.6; }
   94% { opacity: 1; }
   96% { opacity: 0.8; }
-  97% { opacity: 1; }
 }
 .flicker { animation: flicker 4s linear infinite; }
-
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
@@ -129,7 +159,6 @@ body {
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
-
 @keyframes posterRise {
   0% { transform: translateY(40px) scale(0.92); opacity: 0; }
   60% { opacity: 1; }
@@ -142,10 +171,6 @@ body {
 @keyframes spotSweep {
   0%, 100% { transform: rotate(-15deg) translateX(-20px); opacity: 0.5; }
   50% { transform: rotate(15deg) translateX(20px); opacity: 0.9; }
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 @keyframes confettiFall {
   to { transform: translateY(110vh) rotate(720deg); opacity: 0; }

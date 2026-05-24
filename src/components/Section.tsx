@@ -3,6 +3,27 @@
 import Link from "next/link";
 import { IconArrowRight } from "./Icons";
 
+export type Tint =
+  | "rose"
+  | "gold"
+  | "emerald"
+  | "sky"
+  | "violet"
+  | "orange"
+  | "coral"
+  | "mint";
+
+const TINT_COLORS: Record<Tint, string> = {
+  rose: "#f472b6",
+  gold: "#ecbe4a",
+  emerald: "#34d399",
+  sky: "#38bdf8",
+  violet: "#a78bfa",
+  orange: "#fb923c",
+  coral: "#fb7185",
+  mint: "#5eead4",
+};
+
 type Props = {
   children: React.ReactNode;
   eyebrow?: string;
@@ -10,6 +31,7 @@ type Props = {
   actionHref?: string;
   actionLabel?: string;
   className?: string;
+  tint?: Tint;
   contained?: boolean;
 };
 
@@ -20,10 +42,12 @@ export function Section({
   actionHref,
   actionLabel,
   className = "",
+  tint,
   contained = true,
 }: Props) {
+  const style = tint ? ({ ["--tint" as any]: TINT_COLORS[tint] } as React.CSSProperties) : undefined;
   const inner = contained ? (
-    <div className="rounded-2xl border border-ivory-100/10 bg-ink-900/40 p-4 backdrop-blur sm:p-6">
+    <div className={tint ? "tinted" : "card"} style={style}>
       {children}
     </div>
   ) : (
@@ -31,11 +55,18 @@ export function Section({
   );
 
   return (
-    <section className={`min-w-0 ${className}`}>
+    <section className={`min-w-0 ${className}`} style={!contained ? style : undefined}>
       {(eyebrow || title || actionHref) && (
         <div className="mb-3 flex flex-wrap items-end justify-between gap-2 sm:mb-4">
           <div className="min-w-0">
-            {eyebrow && <div className="eyebrow truncate">{eyebrow}</div>}
+            {eyebrow && (
+              <div
+                className="text-[10px] font-bold uppercase tracking-[0.3em] truncate"
+                style={tint ? { color: TINT_COLORS[tint] } : undefined}
+              >
+                {!tint ? <span className="eyebrow">{eyebrow}</span> : eyebrow}
+              </div>
+            )}
             {title && (
               <h2 className="truncate font-display text-xl font-bold text-ivory-50 sm:text-2xl">
                 {title}

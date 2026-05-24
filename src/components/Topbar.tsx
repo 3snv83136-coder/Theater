@@ -37,6 +37,14 @@ export function Topbar() {
 
   const showBack = pathname !== "/";
 
+  const goBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <>
       <header className="sticky top-0 z-30 border-b border-gold-300/10 bg-ink-950/85 backdrop-blur">
@@ -55,7 +63,7 @@ export function Topbar() {
               <button
                 type="button"
                 className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-ivory-100/15 bg-ivory-100/5 text-ivory-100 transition hover:border-gold-300/50 hover:text-gold-200"
-                onClick={() => router.back()}
+                onClick={goBack}
                 aria-label="Retour"
                 title="Retour"
               >

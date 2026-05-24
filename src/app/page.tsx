@@ -26,9 +26,9 @@ export default function HomePage() {
     .slice(0, 4);
 
   return (
-    <div className="space-y-8 sm:space-y-12">
+    <div className="space-y-6 sm:space-y-8">
       {/* HERO */}
-      <section className="relative overflow-hidden rounded-3xl border border-gold-300/30 bg-gradient-to-br from-velvet-900 via-ink-900 to-ink-950 px-5 py-8 shadow-playbill sm:px-10 sm:py-12 md:px-14 md:py-16">
+      <section className="relative overflow-hidden rounded-3xl border border-gold-300/30 bg-gradient-to-br from-[#0e1a3a] via-[#1a1140] to-[#0a1733] px-5 py-8 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.6)] sm:px-10 sm:py-12 md:px-14 md:py-16">
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-8 opacity-80 sm:w-16"
           style={{
@@ -43,8 +43,8 @@ export default function HomePage() {
               "repeating-linear-gradient(90deg, rgba(0,0,0,0.4) 0px, transparent 1px, transparent 8px, rgba(0,0,0,0.4) 9px), linear-gradient(180deg, #4a0d1c 0%, #6e1429 100%)",
           }}
         />
-        <div className="pointer-events-none absolute -top-20 left-1/4 h-[140%] w-48 -rotate-12 bg-gradient-to-b from-gold-200/20 via-transparent to-transparent blur-3xl sm:w-72" />
-        <div className="pointer-events-none absolute -top-20 right-1/4 h-[140%] w-48 rotate-12 bg-gradient-to-b from-gold-200/15 via-transparent to-transparent blur-3xl sm:w-72" />
+        <div className="pointer-events-none absolute -top-20 left-1/4 h-[140%] w-48 -rotate-12 bg-gradient-to-b from-gold-200/25 via-transparent to-transparent blur-3xl sm:w-72" />
+        <div className="pointer-events-none absolute -top-20 right-1/4 h-[140%] w-48 rotate-12 bg-gradient-to-b from-gold-200/20 via-transparent to-transparent blur-3xl sm:w-72" />
 
         <div className="relative mx-6 max-w-3xl sm:mx-12">
           <div className="flex items-center gap-2 sm:gap-3">
@@ -58,7 +58,7 @@ export default function HomePage() {
               ★
             </span>
           </h1>
-          <p className="mt-4 max-w-xl text-sm text-ivory-100/80 sm:mt-5 sm:text-lg">
+          <p className="mt-4 max-w-xl text-sm text-ivory-100/85 sm:mt-5 sm:text-lg">
             La plateforme tout-en-un de la troupe : cours pour tous niveaux,
             générateurs de jeu, agenda par prof, inscriptions, contenu pour le
             site et organisation des spectacles.
@@ -77,37 +77,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MARQUEE STATS */}
-      <Section eyebrow="En chiffres" title="La saison en un coup d'œil" contained={false}>
+      {/* MARQUEE STATS — tinted sky */}
+      <Section eyebrow="En chiffres" title="La saison en un coup d'œil" tint="sky">
         <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
-          <MarqueeStat label="Cours" value={state.courses.length} hint="au programme" />
-          <MarqueeStat label="Profs" value={state.teachers.length} hint="dans la troupe" />
+          <MarqueeStat label="Cours" value={state.courses.length} hint="au programme" tint="#5eead4" />
+          <MarqueeStat label="Profs" value={state.teachers.length} hint="dans la troupe" tint="#a78bfa" />
           <MarqueeStat
             label="Inscrits"
             value={state.inscriptions.length}
             hint={`${state.inscriptions.filter((i) => i.status === "Nouveau").length} en attente`}
+            tint="#ecbe4a"
             highlight
           />
           <MarqueeStat
             label="Spectacles"
             value={state.shows.length}
             hint={`${upcomingShows.length} à venir`}
+            tint="#fb7185"
           />
         </div>
       </Section>
 
       {/* TWO COLUMNS */}
-      <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+      <div className="grid gap-6 lg:grid-cols-2 lg:gap-6">
         <Section
           eyebrow="Régie"
           title="Prochaines sessions"
           actionHref="/agenda"
           actionLabel="Agenda"
-          contained={false}
+          tint="violet"
         >
           <div className="space-y-3">
             {upcomingAgenda.length === 0 && (
-              <div className="card text-sm text-ivory-200/70">
+              <div className="rounded-xl bg-white/5 p-4 text-sm text-ivory-200/70">
                 Aucune session planifiée pour le moment.
               </div>
             )}
@@ -175,11 +177,11 @@ export default function HomePage() {
           title="À venir sur scène"
           actionHref="/spectacles"
           actionLabel="Voir tout"
-          contained={false}
+          tint="gold"
         >
           <div className="space-y-3">
             {upcomingShows.length === 0 && (
-              <div className="card text-sm text-ivory-200/70">
+              <div className="rounded-xl bg-white/5 p-4 text-sm text-ivory-200/70">
                 Aucun spectacle prévu pour l'instant.
               </div>
             )}
@@ -232,14 +234,14 @@ export default function HomePage() {
         title="La troupe"
         actionHref="/agenda"
         actionLabel="Plannings"
-        contained={false}
+        tint="rose"
       >
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8">
           {state.teachers.map((t) => (
             <Link
               key={t.id}
               href={`/agenda?teacher=${t.id}`}
-              className="group relative overflow-hidden rounded-2xl border border-ivory-100/10 bg-ink-800/80 p-3 text-center transition hover:-translate-y-1 hover:border-gold-300/40 sm:p-4"
+              className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.07] p-3 text-center transition hover:-translate-y-1 hover:border-gold-300/40 sm:p-4"
             >
               <div
                 className="absolute inset-x-0 top-0 h-1"
@@ -269,22 +271,34 @@ function MarqueeStat({
   label,
   value,
   hint,
+  tint,
   highlight,
 }: {
   label: string;
   value: number;
   hint?: string;
+  tint?: string;
   highlight?: boolean;
 }) {
+  const color = tint ?? "#ecbe4a";
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border p-4 sm:p-5 ${
-        highlight
-          ? "border-gold-300/50 bg-gradient-to-br from-gold-300/15 to-ink-900"
-          : "border-ivory-100/10 bg-ink-900/80"
-      }`}
+      className="relative overflow-hidden rounded-2xl border p-4 shadow-[0_8px_25px_-10px_rgba(0,0,0,0.45)] sm:p-5"
+      style={{
+        borderColor: `${color}55`,
+        backgroundColor: `${color}14`,
+      }}
     >
-      <div className="eyebrow truncate">{label}</div>
+      <div
+        className="absolute inset-x-0 top-0 h-1"
+        style={{ background: `linear-gradient(90deg, ${color}, ${color}55)` }}
+      />
+      <div
+        className="text-[10px] font-bold uppercase tracking-[0.3em] truncate"
+        style={{ color }}
+      >
+        {label}
+      </div>
       <div className="mt-1 font-marquee text-4xl font-black leading-none text-ivory-50 sm:text-5xl">
         {value.toString().padStart(2, "0")}
       </div>
@@ -294,8 +308,8 @@ function MarqueeStat({
           {Array.from({ length: 8 }).map((_, i) => (
             <span
               key={i}
-              className="block h-1.5 w-1.5 rounded-full bg-gold-300"
-              style={{ animation: `bulbPulse 1.4s ease-in-out ${(i % 3) * 0.3}s infinite` }}
+              className="block h-1.5 w-1.5 rounded-full"
+              style={{ background: color, animation: `bulbPulse 1.4s ease-in-out ${(i % 3) * 0.3}s infinite` }}
             />
           ))}
         </div>
